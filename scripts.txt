@@ -3,5 +3,3 @@ ffmpeg -i input/clock.mpg -f image2 input/%04d.png -y
 
 # video from images
 ffmpeg -i out/%04d.jpg -r $fps out/out.mp4 -y
-
-ffmpeg -i mnt/c/Users/47Rad/Videos/17MotherGooseMelodies/trimmed/01_-The_Skeleton_Dance.mp4 -f image2 skeleton_dance/%04d.png -y
