@@ -60,31 +60,34 @@ def videotexture_analysis(parameters, out_path, from_frame = -1, to_frame = -1):
   tmp = np.zeros((diff2.shape[0], diff2.shape[1]))
   diff3 = np.zeros((diff2.shape[0], diff2.shape[1]))
 
-  # Initialise with D''ij = (D'ij)^p
-  for i in range(1, diff2.shape[0]):
-    for j in range(0, diff2.shape[1]):
-      tmp[i][j] = math.pow(diff2[i - 1][j], qualityExponent)
+  if futureCostAlpha <= 0:
+    diff3 = diff2
+  else:
+    # Initialise with D''ij = (D'ij)^p
+    for i in range(1, diff2.shape[0]):
+      for j in range(0, diff2.shape[1]):
+        tmp[i][j] = math.pow(diff2[i - 1][j], qualityExponent)
 
-  # Continue until an iteration does not change the matrix
-  while True:
-    utils.printProgressBar(0, 1, prefix = 'Future costs:\t', suffix = 'Complete')
-    for i in range(diff2.shape[0] - 1, 0, -1):
-      for j in range(0, diff2.shape[1] - 1):
+    # Continue until an iteration does not change the matrix
+    while True:
+      utils.printProgressBar(0, 1, prefix = 'Future costs:\t', suffix = 'Complete')
+      for i in range(diff2.shape[0] - 1, 0, -1):
+        for j in range(0, diff2.shape[1] - 1):
 
-        # Determine the (D'_ij)^p term
-        future_cost_base = math.pow(diff2[i][j], qualityExponent)
+          # Determine the (D'_ij)^p term
+          future_cost_base = math.pow(diff2[i][j], qualityExponent)
 
-        # Determine the row minimum m_j = min_k D''_jk
-        k_min = tmp[j].min()
+          # Determine the row minimum m_j = min_k D''_jk
+          k_min = tmp[j].min()
 
-        future_cost_summation = futureCostAlpha * k_min
-        tmp[i][j] = future_cost_base + future_cost_summation
+          future_cost_summation = futureCostAlpha * k_min
+          tmp[i][j] = future_cost_base + future_cost_summation
 
-    if (tmp == diff3).all():
-      utils.printProgressBar(1, 1, prefix = 'Future costs:  \t\t', suffix = 'Complete')
-      break
-    else:
-      diff3 = tmp
+      if (tmp == diff3).all():
+        utils.printProgressBar(1, 1, prefix = 'Future costs:  \t\t', suffix = 'Complete')
+        break
+      else:
+        diff3 = tmp
 
   ax[0, 2].set_title("future_cost")
   ax[0, 2].imshow(diff3)

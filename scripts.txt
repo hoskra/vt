@@ -1,5 +1,0 @@
-# extract frames from video
-ffmpeg -i input/clock.mpg -f image2 input/%04d.png -y
-
-# video from images
-ffmpeg -i out/%04d.jpg -r $fps out/out.mp4 -y

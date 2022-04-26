@@ -2,7 +2,8 @@ import os
 import multiprocessing
 
 import frames_analysis
-import create_transition_matrix
+import utils
+import config
 
 clock_parameters = {
   "input_folder"    : "clock",
@@ -11,6 +12,7 @@ clock_parameters = {
   "sigmaMult"       : 2,
   "thresholdValue"  : 0.5,
 }
+
 skeleton_dance_parameters = {
   "input_folder"    : "skeleton_dance",
   "qualityExponent" : 6,
@@ -18,6 +20,7 @@ skeleton_dance_parameters = {
   "sigmaMult"       : 2,
   "thresholdValue"  : 0.6,
 }
+
 cartoon_dance_parameters = {
   "input_folder"    : "cartoon",
   "qualityExponent" : 3,
@@ -26,8 +29,9 @@ cartoon_dance_parameters = {
   "thresholdValue"  : 0.6,
 }
 
+parameters = config.parameters;
+
 MULTIPROCESSING = True
-parameters = cartoon_dance_parameters
 
 step = 100
 half = int(step/2)
@@ -64,5 +68,13 @@ if __name__ == '__main__':
     else:
       run([0, frames_cnt])
 
-    print("Creating transition matrix")
-    create_transition_matrix.run(out_path)
+    print("")
+    print("Creating transition matrix ...")
+    output_name = utils.create_transition_matrix(out_path)
+    print("\tMatrix output located at out/"+ output_name+".png")
+    print("\tCheck "+ output_name+"/*.png files and adjust parameters accordingly!")
+    print("Generate config.js file ...")
+    output_name = utils.create_config_file(parameters["input_folder"], output_name)
+    print("\tDone!")
+    print("\tTo run video-texture player, please type `php -S localhost:8080`")
+    print("\tand visit localhost:8080 in your browser.")
