@@ -42,6 +42,10 @@ main {
   grid-template-columns: 1fr 1fr;
 }
 
+#tint {
+  margin-bottom: 2em;
+}
+
 #transitionsContainer {
   font-size: 10px;
   list-style: none;
@@ -51,17 +55,6 @@ main {
 
 #canvasContainer {
   padding-bottom: 1em;
-}
-
-.controls {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  row-gap: 1em;
-  margin: 2em 0 0 auto;
-}
-.automatic {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 
 .center :last-child {
@@ -104,6 +97,18 @@ img {
   border-top: none;
 }
 
+.slider-container div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.slider-container input {
+  max-width: 150px;
+}
+
+.current-frame {
+  text-align: center;
+}
+
 @media screen and (max-width: 1000px) {
   main{
     width: 500px;
@@ -117,5 +122,8 @@ img {
   }
   .tab {
     margin-top: 1em;
+  }
+  #similarityMatrices {
+    max-width: 480px;
   }
 }

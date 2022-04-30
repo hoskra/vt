@@ -21,18 +21,19 @@
         <h3>Player</h3>
         <div id="canvasContainer"><span id="Loading">... Loading ... </span></div>
       </div>
-      <p>Current frame: <span id="frame">0</span></p>
-      <div class="controls">
-        <div class="automatic">
+      <p class="current-frame">Current frame: <span id="frame">0</span></p>
+        <div class="slider-container">
+          <h3>Speed settings</h3>
           <div>
-            <h3>Automatic play</h3>
-            <input type="radio" name="automatic" id="Linear" value="Linear" checked="checked"/> <label for="Linear">Linear</label><br />
-            <input type="radio" name="automatic" id="Random" value="Random" /> <label for="Random">Random</label><br />
-            <input type="radio" name="automatic" id="None" value="None" /> <label for="None">Stop</label><br />
+            <input type="range" min="1" max="100" value="50" class="slider" id="speed">
+            <p>Speed: <span id="speedValue">50</span>%</p>
           </div>
+        </div>
+        <div class="slider-container">
+          <h3>Jump probability</h3>
           <div>
-              <h3>Manual</h3>
-              <button id="jump" disabled>random jump</button>
+            <input type="range" min="0" max="100" value="0" class="slider" id="probability">
+            <p>Probability: <span id="probabilityValue">0</span>%</p>
           </div>
         </div>
         <div class="tint">
@@ -48,12 +49,16 @@
       <section class="tab">
         <button class="tablinks active" onclick="openTab(event, 'transitions')">List of transitions </button>
         <button class="tablinks" onclick="openTab(event, 'matrix')">Transition matrix </button>
+        <button class="tablinks" onclick="openTab(event, 'similarity')">Similarity matrices </button>
       </section>
       <section id="transitions" class="tabcontent">
         <ul id="transitionsContainer"></ul>
       </section>
       <section id="matrix" class="tabcontent">
         <img id="transitionMatrix" />
+      </section>
+      <section id="similarity" class="tabcontent">
+        <img id="similarityMatrices" />
       </section>
     </div>
   </main>

@@ -23,3 +23,21 @@ Repository is a bit harder to use from user perspective. It requires to set up v
    - or `php -S localhost:8000`
    - or fo javascript server install and run Parcel, Snowpack, etc.
 6. Open http://localhost:8000/
+## Play already generated transitions
+
+Previsously generated transitions are stored in `src/saved_config.js` file.
+
+To preview already generated transitions, edit `src/config.js` file by replacing *config* object with object generated in `src/saved_config.js`.
+
+*Variable name has to stay `config`.*
+
+### Example previous
+```js
+const config = {"filename": "out/clock_2_0.999_2_0.5", "folder": "clock", "extension": "png", "from": 1, "to": 37, "slice": false};
+
+```
+### Example Edit
+
+```js
+const config = {"filename": "out/grass_7_0.999_2_0.6", "folder": "grass", "extension": "png", "from": 1, "to": 250, "slice": false};
+```

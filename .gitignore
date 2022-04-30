@@ -7,4 +7,8 @@ skeleton_dance/
 stairs1/
 stairs2/
 grass/
+.package.json
+.package-lock.json
+node_modules/
+
 

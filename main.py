@@ -13,17 +13,33 @@ clock_parameters = {
   "thresholdValue"  : 0.5,
 }
 
-skeleton_dance_parameters = {
-  "input_folder"    : "skeleton_dance",
-  "qualityExponent" : 6,
+cartoon_parameters = {
+  "input_folder"    : "cartoon",
+  "qualityExponent" : 3,
   "futureCostAlpha" : 0.999,
   "sigmaMult"       : 2,
   "thresholdValue"  : 0.6,
 }
 
-cartoon_dance_parameters = {
-  "input_folder"    : "cartoon",
-  "qualityExponent" : 3,
+grass_parameters = {
+  "input_folder"    : "grass",
+  "qualityExponent" : 7,
+  "futureCostAlpha" : 0.999,
+  "sigmaMult"       : 2,
+  "thresholdValue"  : 0.6,
+}
+
+stairs1_parameters = {
+  "input_folder"    : "stairs1",
+  "qualityExponent" : 5,
+  "futureCostAlpha" : 0.999,
+  "sigmaMult"       : 2,
+  "thresholdValue"  : 0.7,
+}
+
+stairs2_parameters = {
+  "input_folder"    : "stairs2",
+  "qualityExponent" : 7,
   "futureCostAlpha" : 0.999,
   "sigmaMult"       : 2,
   "thresholdValue"  : 0.6,

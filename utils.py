@@ -97,8 +97,6 @@ def create_transition_matrix(input_file):
             matrix[from_frame + row][col+from_frame] = 255
             transitions[row+from_frame].append(col+from_frame)
 
-  output_name = input_file + "__F:" + str(from_frame) +"_T:" + str(max_to)
-
   # plot matrix
   fig = plt.figure()
   fig.suptitle('Transition matrix')
@@ -108,13 +106,13 @@ def create_transition_matrix(input_file):
   plt.yticks(np.linspace(0, len(matrix[1]), 2))
   plt.gca().invert_yaxis()
   plt.imshow(matrix, cmap='viridis')
-  plt.savefig(output_name + ".png", bbox_inches='tight')
+  plt.savefig(input_file + ".png", bbox_inches='tight')
 
   # print transitions
-  f = open(output_name + ".txt", "w")
+  f = open(input_file + ".txt", "w")
   for i, t in enumerate(transitions):
     t = list(set(t))
     transitions[i] = t
     f.write(str(t) + "\n")
 
-  return output_name
+  return input_file
