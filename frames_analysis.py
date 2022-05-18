@@ -42,7 +42,6 @@ def videotexture_analysis(parameters, out_path, from_frame = -1, to_frame = -1):
 
   ax[0, 0].imshow(diff1)
   ax[0, 0].set_title("distances")
-  plt.show()
 
   ''' Preserve dynamics '''
   kernel = np.diag(np.array([ 0.0625,  0.25  ,  0.375 ,  0.25  ,  0.0625], dtype=float))
