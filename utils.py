@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 import json
+import platform
 
 def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 50, fill = '█', printEnd = "\r"):
     # https://www.programcreek.com/python/?CodeExample=print+progress+bar
@@ -48,9 +49,14 @@ def create_config_file(input_file, output_name) :
     json.dump(config, outfile)
     outfile.write(";")
 
+  system = platform.system()
+  divider = "/"
+  if system == "Windows":
+    divider = "\\"
+
   with open('src/saved_configs.js', 'a') as outfile:
     outfile.write("const ")
-    name = output_name.split("/")[1].replace(".","_").replace(":","_")
+    name = output_name.split(divider)[1].replace(".","_").replace(":","_")
     outfile.write(name)
     outfile.write(" = ")
     json.dump(config, outfile)

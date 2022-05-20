@@ -117,7 +117,8 @@ function readTextFile(file) {
             );
 
             transitions[i].forEach(e => {
-              li.innerHTML += e += " "
+              if(e)
+                li.innerHTML += e + " "
             });
           }
         });
