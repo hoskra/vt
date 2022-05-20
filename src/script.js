@@ -116,9 +116,14 @@ function readTextFile(file) {
               .map(x => { return parseInt(x) })
             );
 
+            if(transitions[i].length) {
+              if(!transitions[i][0]) {
+                transitions[i] = [];
+              }
+            }
+
             transitions[i].forEach(e => {
-              if(e)
-                li.innerHTML += e + " "
+              li.innerHTML += e + " "
             });
           }
         });
