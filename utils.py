@@ -2,6 +2,7 @@ import os
 from cv2 import INTER_MAX
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
 import json
 
 def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 50, fill = '█', printEnd = "\r"):
@@ -28,7 +29,7 @@ def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, 
 
 def create_config_file(input_file, output_name) :
   cnt = len(os.listdir(input_file))
-  fromFrame = os.listdir(input_file)[0]
+  fromFrame = sorted(os.listdir(input_file))[0]
   [fromFrame, extension]  = fromFrame.split(".")
   fromFrame = int(fromFrame)
   toFrame = fromFrame + cnt - 1
@@ -98,6 +99,7 @@ def create_transition_matrix(input_file):
             transitions[row+from_frame].append(col+from_frame)
 
   # plot matrix
+  matplotlib.use('agg')   ## https://stackoverflow.com/a/28904054
   fig = plt.figure()
   fig.suptitle('Transition matrix')
   plt.xlim(0,len(matrix[0]))

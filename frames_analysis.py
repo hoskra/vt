@@ -19,8 +19,10 @@ def videotexture_analysis(parameters, out_path, from_frame = -1, to_frame = -1):
   thresholdValue  = parameters["thresholdValue"]
   input_folder    = parameters["input_folder"]
 
+  input_frames = sorted(os.listdir(input_folder))
+
   for i in range(from_frame, to_frame):
-    filename = os.listdir(input_folder)[i]
+    filename = input_frames[i]
     value = cv2.imread(os.path.join(input_folder, filename), cv2.IMREAD_GRAYSCALE)
     img_list.append(value)
 

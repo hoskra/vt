@@ -26,6 +26,11 @@ To install python3 dependencies, run command below.
 
 ```pip3 install -r requirements.txt```
 
+Possible issues:
+- `ModuleNotFoundError: No module named 'skbuild'`
+   - fix by upgrading pip:
+      `python3 -m pip install --upgrade pip`
+
 ## Video Textures player usage
 
 Repository is a bit harder to use from user perspective. It requires to set up video frames and type config manually.

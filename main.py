@@ -92,5 +92,5 @@ if __name__ == '__main__':
     print("Generate config.js file ...")
     output_name = utils.create_config_file(parameters["input_folder"], output_name)
     print("\tDone!")
-    print("\tTo run video-texture player, please type `php -S localhost:8080`")
-    print("\tand visit localhost:8080 in your browser.")
+    print("\tTo run video-texture player, please type `python3 -m http.server`")
+    print("\tand visit localhost:8000 in your browser.")
